@@ -1,10 +1,12 @@
 package com.devspace.recyclerview
 
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -20,11 +22,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         val rvList = findViewById<RecyclerView>(R.id.rv_list)
+        val ivGrid = findViewById<ImageView>(R.id.iv_grid)
+        val ivList = findViewById<ImageView>(R.id.iv_list)
         val adapter = ContactListAdapter()
 
         rvList.adapter = adapter
         rvList.layoutManager = LinearLayoutManager(this)
         adapter.submitList(contacts)
+
+        ivGrid.setOnClickListener {
+            rvList.layoutManager = GridLayoutManager(this,2)
+        }
+
+        ivList.setOnClickListener {
+            rvList.layoutManager = LinearLayoutManager(this)
+        }
     }
 }
 
@@ -40,7 +52,7 @@ val contacts = listOf(
         R.drawable.sample2
     ),
     Contact(
-        "José",
+        "Luiza",
         "(55) 11 9457-9857",
         R.drawable.sample5
     ),
@@ -55,7 +67,7 @@ val contacts = listOf(
         R.drawable.sample4
     ),
     Contact(
-        "Antonio",
+        "Aline",
         "(55) 11 9743-9857",
         R.drawable.sample5
     ),
@@ -95,7 +107,7 @@ val contacts = listOf(
         R.drawable.sample12
     ),
     Contact(
-        "Fernando",
+        "Luiza",
         "(55) 11 9147-1234",
         R.drawable.sample13
     ),
